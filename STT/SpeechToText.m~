@@ -1,5 +1,0 @@
-Fs = 8000;
-Duration = 10;
-
-recObj = audiorecorder(44100, 16, 2);
-[y,Fs] = audioread('../Record')
