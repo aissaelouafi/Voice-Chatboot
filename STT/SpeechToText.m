@@ -13,7 +13,7 @@ LF = 300;               % lower frequency limit (Hz)
 HF = 3700;              % upper frequency limit (Hz)
 
 % Read speech samples, sampling rate and precision from file
-[ speech, fs ] = audioread('./train/bonjour_10.wav');
+[ speech, fs ] = audioread('./train/cava_1.wav');
 
 % Feature extraction (feature vectors as columns)
 [ MFCCs, FBEs, frames ] = mfcc( speech, fs, Tw, Ts, alpha, @hamming, [LF HF], M, C+1, L );
