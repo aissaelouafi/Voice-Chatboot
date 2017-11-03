@@ -11,11 +11,13 @@ L = 22;                 % cepstral sine lifter parameter
 LF = 300;               % lower frequency limit (Hz)
 HF = 3700;              % upper frequency limit (Hz)
 
+GMixtures = 10;
+
 options=statset('Display','final','MaxIter',1500,'TolFun',1e-10);
 
 
 % La liste des phrases a reconnaitres 
-phrases = {'bonjour','cava','tu_vas_bien'};
+phrases = {'bonjour','cava','tu_vas_bien','quelle_heure_est_il','comment_tu_tappelle'};
 
 % GMM array
 GMMs = cell(15*length(phrases),2);
@@ -34,7 +36,7 @@ for j=1:length(phrases)
         MFCCs = mfcc( audio_file, fs, Tw, Ts, alpha, @hamming, [LF HF], M, C+1, L )';
         
         %Calculate Gaussian mixture Model
-        GMM = gmdistribution.fit(MFCCs,8,'CovType','diagonal');
+        GMM = gmdistribution.fit(MFCCs,GMixtures,'CovType','diagonal');
         
         %Add GMM model to list
         GMMs{g,1} = GMM;
@@ -49,7 +51,7 @@ for j=1:length(phrases)
 end
 
 
-test_audio = audioread('./test/cava_test_4.wav');
+test_audio = audioread('./test/cava_test_1.wav');
 MFCCs_test = mfcc( test_audio, fs, Tw, Ts, alpha, @hamming, [LF HF], M, C+1, L )';
 
 for g=1:length(GMMs)
@@ -58,11 +60,13 @@ end
 
 
 
-%[ V I]= min(abs(nlog));
-mean_array = reshape(nlog,15,length(phrases));
+[ V I]= min(abs(nlog));
+
+mean_array = reshape(abs(nlog),15,length(phrases));
 mean_array = mean(mean_array);
 min_proba = min(mean_array);
 phrase_index = find(mean_array == min_proba);
 
 sound(test_audio,8000);
-disp(sprintf('La phrase est : %s',strrep(phrases{phrase_index},'_',' ')));
+disp(sprintf('La phrase par la moyenne est : %s',strrep(phrases{phrase_index},'_',' ')));
+disp(sprintf('La phrase par le min est : %s',strrep(GMMs{I,2},'_',' ')));
