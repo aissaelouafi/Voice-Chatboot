@@ -1,0 +1,4 @@
+./Conversations/*
+./Records/*
+./STT/train/*
+./STT/test/*
