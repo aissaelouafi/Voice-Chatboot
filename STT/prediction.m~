@@ -1,7 +1,7 @@
 % Load matlab worksplace image
 load('gmm_models.mat')
 
-filename = '1509845107.2_05-11-2017-02-25-29-in.wav';
+filename = '1509843226.1_05-11-2017-01-54-06-in.wav';
 filename_split = strsplit(filename,'_');
 % Call infos 
 caller_id = filename_split{1};
@@ -32,20 +32,16 @@ disp(sprintf('La phrase par le min est : %s',strrep(GMMs{I,2},'_',' ')));
 
 % Write the conversations result to txt file
 fileID = fopen(sprintf('../Conversations/full_conversation_%s.txt',caller_id),'a');
-question_details = sprintf('%s -- %s -- %s -- %s\n','Caller',datestr(now,'YYYY-mm-dd HH:MM:SS.FFF'),filename,strrep(GMMs{I,2},'_',' '));
+question_details = sprintf('%s -- %s -- %s\n','Caller',datestr(now,'YYYY-mm-dd HH:MM:SS.FFF'),strrep(GMMs{I,2},'_',' '));
 nbytes = fprintf(fileID,question_details);
 
 
 % Generate the response 
 % ./matlab -nodesktop -r "cd ~/Desktop/MLProjets/VoiceChatboot/STT/; run('~/Desktop/MLProjets/VoiceChatboot/STT/prediction.m')"
-response = 'Il est 4 heures du matin';
+response = 'Je mapelle Messi';
 response_details = sprintf('%s -- %s -- %s\n','Chatboot',datestr(now,'YYYY-mm-dd HH:MM:SS.FFF'),response);
 nbytes = fprintf(fileID,response_details);
 fclose(fileID);
 
-uniquefileID = fopen(sprintf('../Conversations/%s.txt',caller_id),'w');
-% Asterisk lit le fichier txt apres il le supprime ... 
-nbytes = fprintf(uniquefileID,response);
-fclose(uniquefileID);
-
+uniquefileID = fopen(sprintf('../Conversation%s.txt',caller_id),'a');
 

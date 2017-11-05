@@ -1,0 +1,4 @@
+Caller -- 2017-11-05 02:33:42.876 -- 1509845107.2_05-11-2017-02-25-13-in.wav -- comment tu tappelle
+Chatboot -- 2017-11-05 02:33:42.879 -- Il est 4 heures du matin
+Caller -- 2017-11-05 02:34:15.654 -- 1509845107.2_05-11-2017-02-25-29-in.wav -- quelle heure est il
+Chatboot -- 2017-11-05 02:34:15.656 -- Il est 4 heures du matin
