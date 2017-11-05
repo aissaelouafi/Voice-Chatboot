@@ -11,7 +11,7 @@ L = 22;                 % cepstral sine lifter parameter
 LF = 300;               % lower frequency limit (Hz)
 HF = 3700;              % upper frequency limit (Hz)
 
-GMixtures = 10;
+GMixtures = 8;
 
 options=statset('Display','final','MaxIter',1500,'TolFun',1e-10);
 
@@ -50,23 +50,4 @@ for j=1:length(phrases)
     end
 end
 
-
-test_audio = audioread('./test/cava_test_1.wav');
-MFCCs_test = mfcc( test_audio, fs, Tw, Ts, alpha, @hamming, [LF HF], M, C+1, L )';
-
-for g=1:length(GMMs)
-    [POST_PROBA,nlog(g)] = posterior(GMMs{g},MFCCs_test);
-end
-
-
-
-[ V I]= min(abs(nlog));
-
-mean_array = reshape(abs(nlog),15,length(phrases));
-mean_array = mean(mean_array);
-min_proba = min(mean_array);
-phrase_index = find(mean_array == min_proba);
-
-sound(test_audio,8000);
-disp(sprintf('La phrase par la moyenne est : %s',strrep(phrases{phrase_index},'_',' ')));
-disp(sprintf('La phrase par le min est : %s',strrep(GMMs{I,2},'_',' ')));
+save('gmm_models')
