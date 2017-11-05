@@ -1,4 +1,4 @@
-/Conversations/*
-/Records/*
-/STT/train/*
-/STT/test/*
+Conversations/*
+Records/*
+STT/train/*
+STT/test/*
