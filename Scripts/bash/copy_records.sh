@@ -3,8 +3,10 @@
 
 inotifywait -m /var/spool/asterisk/monitor -e create -e moved_to -e modify |
 	while read path action file; do
-		echo "The file '$file' apperaed in directory '$path' via '$action'"
-		cp $path$file /media/sf_VoiceChatboot/Records/$file
-		echo "The file '$file' copied to /media/sf_VoiceChatboot/Records folder"
+		if [ "$action" == "CREATE" ]; then
+			echo "The file '$file' apperaed in directory '$path' via '$action'"
+			sleep 7
+			cp $path$file /media/sf_VoiceChatboot/Records/$file
+			echo "The file '$file' copied to /media/sf_VoiceChatboot/Records folder"
+		fi
 	done
-
