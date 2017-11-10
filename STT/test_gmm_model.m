@@ -19,7 +19,7 @@ for j=1:length(phrases)
         MFCCs_test = mfcc( audio_file, fs, Tw, Ts, alpha, @hamming, [LF HF], M, C+1, L )';
         
         for g=1:length(GMMs)
-            [POST_PROBA,nlog(g)] = posterior(GMMs{g},MFCCs_test);
+            [POST_PROBA,nlog(g,i*j)] = posterior(GMMs{g},MFCCs_test);
 end
 
 

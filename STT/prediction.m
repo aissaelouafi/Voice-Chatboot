@@ -1,14 +1,17 @@
 % Load matlab worksplace image
 load('gmm_models.mat')
-disp(wavfile);
+%disp(wavfile);
 
 
 
+wavfile='./test/quels_sont_les_restaurants_ouverts_test_1.wav';
 % Get the wav filename argument 
 filename = strsplit(wavfile,'/');
 filename = filename{length(filename)};
 filename_split = strsplit(filename,'_');
 
+%Train size 
+train_size=25;
 
 % Call infos 
 caller_id = filename_split{1};
@@ -27,12 +30,12 @@ end
 % Get the min proba & find the sentences
 [ V I]= min(abs(nlog));
 
-mean_array = reshape(abs(nlog),15,length(phrases));
+mean_array = reshape(abs(nlog),train_size,length(phrases));
 mean_array = mean(mean_array);
 min_proba = min(mean_array);
 phrase_index = find(mean_array == min_proba);
 
-%sound(test_audio,8000);
+sound(test_audio,8000);
 disp(sprintf('La phrase par la moyenne est : %s',strrep(phrases{phrase_index},'_',' ')));
 disp(sprintf('La phrase par le min est : %s',strrep(GMMs{I,2},'_',' ')));
 
@@ -56,4 +59,4 @@ uniquefileID = fopen(sprintf('../Conversations/%s.txt',caller_id),'w');
 nbytes = fprintf(uniquefileID,response);
 fclose(uniquefileID);
 
-quit;
+%quit;

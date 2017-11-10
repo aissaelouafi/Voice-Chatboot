@@ -17,21 +17,25 @@ options=statset('Display','final','MaxIter',1500,'TolFun',1e-10);
 
 
 % La liste des phrases a reconnaitres 
-phrases = {'bonjour','cava','tu_vas_bien','quelle_heure_est_il','comment_tu_tappelle'};
+phrases = {'cava','tu_vas_bien','quelle_heure_est_il','comment_tu_tappelle','bonjour','quels_sont_les_restaurants_ouverts'};
+
+% train data size 
+train_size = 25;
 
 % GMM array
-GMMs = cell(15*length(phrases),2);
+GMMs = cell(train_size*length(phrases),2);
 
 g = 1;
 % Read speech samples, sampling rate and precision from file
 for j=1:length(phrases)
-    for i=1:15
+    for i=1:train_size
         % Construct train data filename
         file = sprintf('%s_%d',phrases{j},i);
 
         % Read the audio file
         audio_file = audioread(sprintf('%s%s%s','./train/',file,'.wav'));
         
+        disp(file);
         % Calculate MFCCs features
         MFCCs = mfcc( audio_file, fs, Tw, Ts, alpha, @hamming, [LF HF], M, C+1, L )';
         
