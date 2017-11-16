@@ -1,4 +1,5 @@
 % Load matlab worksplace image
+warning('off','all')
 load('gmm_models.mat')
 %disp(wavfile);
 
@@ -6,11 +7,12 @@ load('gmm_models.mat')
 
 %wavfile='./test/quels_sont_les_restaurants_ouverts_test_1.wav';
 % Get the wav filename argument 
+wavfile = '1510608465.3_13-11-2017-22-33-00-in.wav'
 filename = strsplit(wavfile,'/');
 filename = filename{length(filename)};
 filename_split = strsplit(filename,'_');
 
-%Train size 
+%Train sizee
 train_size=25;
 
 % Call infos 
@@ -81,4 +83,4 @@ response_details = sprintf('%s ; %s ; %s ; %s\n','Chatboot',datestr(now,'YYYY-mm
 nbytes = fprintf(fileID,response_details);
 fclose(fileID);
 
-quit;
+%quit;
