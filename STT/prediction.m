@@ -1,13 +1,11 @@
 % Load matlab worksplace image
 warning('off','all')
 load('gmm_models.mat')
-%disp(wavfile);
 
 
 
 %wavfile='./test/quels_sont_les_restaurants_ouverts_test_1.wav';
 % Get the wav filename argument 
-wavfile = '1510608465.3_13-11-2017-22-33-00-in.wav'
 filename = strsplit(wavfile,'/');
 filename = filename{length(filename)};
 filename_split = strsplit(filename,'_');
@@ -74,7 +72,7 @@ end
 
 uniquefileID = fopen(sprintf('../Conversations/%s.txt',caller_id),'w');
 
-% Asterisk lit le fichier txt apres il le supprime ... 
+% Asterisk lis le fichier txt apres il le supprime ... 
 nbytes = fprintf(uniquefileID,response);
 fclose(uniquefileID);
 
@@ -83,4 +81,4 @@ response_details = sprintf('%s ; %s ; %s ; %s\n','Chatboot',datestr(now,'YYYY-mm
 nbytes = fprintf(fileID,response_details);
 fclose(fileID);
 
-%quit;
+quit;
