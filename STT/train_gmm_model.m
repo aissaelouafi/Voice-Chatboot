@@ -11,9 +11,9 @@ L = 22;                 % cepstral sine lifter parameter
 LF = 300;               % lower frequency limit (Hz)
 HF = 3700;              % upper frequency limit (Hz)
 
-GMixtures = 10;
+GMixtures = 8;
 
-options=statset('Display','final','MaxIter',5000,'TolFun',1e-10);
+options=statset('Display','final','MaxIter',2500,'TolFun',1e-10);
 
 %8 - 1500
 
