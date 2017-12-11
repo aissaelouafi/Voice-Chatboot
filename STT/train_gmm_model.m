@@ -11,13 +11,15 @@ L = 22;                 % cepstral sine lifter parameter
 LF = 300;               % lower frequency limit (Hz)
 HF = 3700;              % upper frequency limit (Hz)
 
-GMixtures = 8;
+GMixtures = 10;
 
-options=statset('Display','final','MaxIter',1500,'TolFun',1e-10);
+options=statset('Display','final','MaxIter',5000,'TolFun',1e-10);
 
+%8 - 1500
 
 % La liste des phrases a reconnaitres 
-phrases = {'cava','tu_vas_bien','quelle_heure_est_il','comment_tu_tappelle','bonjour','quels_sont_les_restaurants_ouverts'};
+%phrases = {'cava','tu_vas_bien','quelle_heure_est_il','comment_tu_tappelle','bonjour','quels_sont_les_restaurants_ouverts'};
+phrases = {'quelle_heure_est_il','comment_tu_tappelle','quels_sont_les_restaurants_ouverts'};
 
 % train data size 
 train_size = 25;

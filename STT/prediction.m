@@ -53,12 +53,12 @@ for i=1:length(phrases)
     responses_cell{i,1} = phrases{i};
 end
 
-responses_cell{1,2} = {'Cava et toi ?','Super et toi mon gars ?','Parfait et toi ?'};
-responses_cell{2,2} = {'Oui je vais bien et toi ?','je vais super bien et toi ?','Oui merci et toi ?'};
-responses_cell{3,2} = {sprintf('Il est %s heures et %s minutes',datestr(now,'HH'),datestr(now,'MM')),sprintf('Actuellement il est %s heures et %s minutes',datestr(now,'HH'),datestr(now,'MM')),sprintf('La montre indique quil est %s heures et %s minutes Aissa',datestr(now,'HH'),datestr(now,'MM'))};
-responses_cell{4,2} = {'Je mapelle Messi et toi ? ','On mapelle Messi parce que je suis aussi fort que lui ','On me surnomme Messi je suis un geni comme lui'};
-responses_cell{5,2} = {'Bonjour ','Hey mon gars','Hello'};
-responses_cell{6,2} = {'Les restaurants ouverts a proximite sont : Pizza hut a Gennvilliers, 209 a Saint Denis ','Aucun restaurant nest ouvert',sprintf('Tu te fou de moi connard ! il ya pas de restaurants ouvert a Gennevilliers a %s heures et %s minutes ! arretes de te foutre de moi sil te plait',datestr(now,'HH'),datestr(now,'MM'))};
+%responses_cell{1,2} = {'Cava et toi ?','Super et toi mon gars ?','Parfait et toi ?'};
+%responses_cell{2,2} = {'Oui je vais bien et toi ?','je vais super bien et toi ?','Oui merci et toi ?'};
+responses_cell{1,2} = {sprintf('Il est %s heures et %s minutes',datestr(now,'HH'),datestr(now,'MM')),sprintf('Actuellement il est %s heures et %s minutes',datestr(now,'HH'),datestr(now,'MM')),sprintf('La montre indique quil est %s heures et %s minutes Aissa',datestr(now,'HH'),datestr(now,'MM'))};
+responses_cell{2,2} = {'Je mapelle Messi et toi ? ','On mapelle Messi parce que je suis aussi fort que lui ','On me surnomme Messi je suis un geni comme lui'};
+%responses_cell{5,2} = {'Bonjour ','Hey mon gars','Hello'};
+responses_cell{3,2} = {'Les restaurants ouverts a proximite sont : Pizza hut a Gennvilliers, 209 a Saint Denis ','Aucun restaurant nest ouvert',sprintf('Tu te fou de moi connard ! il ya pas de restaurants ouvert a Gennevilliers a %s heures et %s minutes ! arretes de te foutre de moi sil te plait',datestr(now,'HH'),datestr(now,'MM'))};
 
 
 response = '';
